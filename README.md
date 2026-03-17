@@ -10,6 +10,28 @@ This project provisions a production-style VPC foundation:
 - Public and private route tables with subnet associations
 - Private EC2 instance with VPC-internal access controls
 
+## Architecture Diagram
+
+```mermaid
+flowchart TD
+  Internet[Internet] --> IGW[Internet Gateway]
+
+  IGW --> PublicRT[Public Route Table]
+  PublicRT --> Public1[Public Subnet 1<br/>10.0.1.0/24]
+  PublicRT --> Public2[Public Subnet 2<br/>10.0.2.0/24]
+
+  Public1 --> NAT[NAT Gateway + Elastic IP]
+
+  PrivateRT[Private Route Table] --> Private1[Private Subnet 1<br/>10.0.11.0/24]
+  PrivateRT --> Private2[Private Subnet 2<br/>10.0.12.0/24]
+
+  Private1 --> EC2[Private EC2 Instance]
+  Private1 --> PrivateRT
+  Private2 --> PrivateRT
+
+  PrivateRT --> NAT
+  NAT --> IGW
+
 ## Why This Design
 - Public subnets host internet-facing network components.
 - Private subnets isolate workloads from direct internet exposure.
