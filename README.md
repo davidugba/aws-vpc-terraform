@@ -11,6 +11,7 @@ This project provisions a production-style VPC foundation:
 - Private EC2 instance with VPC-internal access controls
 
 ## Architecture Diagram
+
 ```mermaid
 flowchart TD
   Internet[Internet] --> IGW[Internet Gateway]
@@ -30,6 +31,20 @@ flowchart TD
 
   PrivateRT --> NAT
   NAT --> IGW
+
+  classDef internet fill:#ffe6cc,stroke:#cc7a00,stroke-width:2px,color:#1f1f1f;
+  classDef public fill:#d6f5ff,stroke:#1f78b4,stroke-width:2px,color:#1f1f1f;
+  classDef private fill:#e7ffe7,stroke:#2e8b57,stroke-width:2px,color:#1f1f1f;
+  classDef compute fill:#f3e8ff,stroke:#6a3d9a,stroke-width:2px,color:#1f1f1f;
+  classDef route fill:#fff7cc,stroke:#b8860b,stroke-width:2px,color:#1f1f1f;
+  classDef nat fill:#ffd6d6,stroke:#c0392b,stroke-width:2px,color:#1f1f1f;
+
+  class Internet,IGW internet;
+  class Public1,Public2 public;
+  class Private1,Private2 private;
+  class EC2 compute;
+  class PublicRT,PrivateRT route;
+  class NAT nat;
 ```
 
 ## Why This Design
