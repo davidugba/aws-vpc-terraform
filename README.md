@@ -11,6 +11,7 @@ This project provisions a production-style VPC foundation:
 - Private EC2 instance with VPC-internal access controls
 
 ## Architecture Diagram
+
 ```mermaid
 flowchart TD
   Internet[Internet] --> IGW[Internet Gateway]
