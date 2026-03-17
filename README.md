@@ -11,7 +11,6 @@ This project provisions a production-style VPC foundation:
 - Private EC2 instance with VPC-internal access controls
 
 ## Architecture Diagram
-
 ```mermaid
 flowchart TD
   Internet[Internet] --> IGW[Internet Gateway]
@@ -31,6 +30,7 @@ flowchart TD
 
   PrivateRT --> NAT
   NAT --> IGW
+```
 
 ## Why This Design
 - Public subnets host internet-facing network components.
